@@ -1,0 +1,37 @@
+{
+  "validUser": {
+    "username": "john",
+    "password": "demo"
+  },
+  "validUser2": {
+    "username": "TestTHkhang",
+    "password": "Khang@2026"
+  },
+  "invalidUser": {
+    "username": "wronguser",
+    "password": "wrongpass"
+  },
+  "newUser": {
+    "firstName": "Nguyen",
+    "lastName": "Van A",
+    "address": "123 Le Loi",
+    "city": "Ho Chi Minh",
+    "state": "HCM",
+    "zipCode": "700000",
+    "phone": "0901234567",
+    "ssn": "123456789",
+    "password": "Test@123"
+  },
+  "transfer": {
+    "amount": "100"
+  },
+  "billPay": {
+    "payeeName": "Electric Company",
+    "address": "456 Nguyen Hue",
+    "city": "Ho Chi Minh",
+    "state": "HCM",
+    "zipCode": "700000",
+    "phone": "0281234567",
+    "amount": "50"
+  }
+}
