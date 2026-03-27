@@ -125,7 +125,7 @@ namespace ParaBankTests.Pages
         {
             var select = new OpenQA.Selenium.Support.UI.SelectElement(
                 driver.FindElement(fromAccountSelect));
-            return select.Options.Select(o => o.GetAttribute("value")).ToList();
+            return select.Options.Select(o => o.GetAttribute("value") ?? string.Empty).ToList();
         }
     }
 }

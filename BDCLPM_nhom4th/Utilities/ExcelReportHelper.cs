@@ -4,17 +4,39 @@ using System.IO;
 
 namespace ParaBankTests.Utilities
 {
-    public static class ExcelReportHelper
+    public static partial class ExcelReportHelper
     {
-        private static readonly string ExcelFilePath =
-            Path.Combine(@"E:\Excel_test", "TestScenario_nhom4.xlsx");
+        private static readonly string ExcelFilePath = FindExcelFile();
+
+        private static string FindExcelFile()
+        {
+            // Tìm từ thư mục gốc workspace
+            var candidates = new[]
+            {
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "TestScenario_nhom4.xlsx"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "..", "TestScenario_nhom4.xlsx"),
+                Path.Combine(@"E:\Excel_test", "TestScenario_nhom4.xlsx"),
+                Path.Combine(@"D:\ĐBCLPM_TH\BDCLPM_nhom4th-master", "TestScenario_nhom4.xlsx"),
+            };
+
+            foreach (var c in candidates)
+            {
+                var full = Path.GetFullPath(c);
+                if (File.Exists(full)) return full;
+            }
+
+            // Không tìm thấy — trả về path mặc định để log
+            return Path.Combine(@"E:\Excel_test", "TestScenario_nhom4.xlsx");
+        }
 
         private static readonly object _lock = new();
 
+        [System.Text.RegularExpressions.GeneratedRegex(@"TC_TS_\d+_\d+")]
+        private static partial System.Text.RegularExpressions.Regex TestCaseIdRegex();
+
         private static string ExtractTestCaseId(string testMethodName)
         {
-            var match = System.Text.RegularExpressions.Regex.Match(
-                testMethodName, @"TC_TS_\d+_\d+");
+            var match = TestCaseIdRegex().Match(testMethodName);
             return match.Success ? match.Value : testMethodName;
         }
 

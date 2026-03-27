@@ -21,8 +21,8 @@ namespace ParaBankTests.Pages
             Type(usernameInput, username);
             Type(passwordInput, password);
             Click(loginButton);
-            // Chờ redirect khỏi trang login (URL không còn là index.htm)
-            wait.Until(d => !d.Url.Contains("index.htm") || d.Url.Contains("overview"));
+            // Chờ trang load xong sau khi click login (URL rời khỏi index.htm)
+            wait.Until(d => !d.Url.Contains("index.htm"));
         }
 
         public bool IsUsernameInputDisplayed() => IsDisplayed(usernameInput);

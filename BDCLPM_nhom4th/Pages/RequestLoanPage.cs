@@ -56,7 +56,7 @@ namespace ParaBankTests.Pages
         public string GetLoanStatus() => GetText(loanStatus);
         public string GetLoanProvider() => GetText(loanProviderName);
         public string GetNewAccountId() => GetText(newAccountIdLink);
-        public string GetNewAccountHref() => driver.FindElement(newAccountIdLink).GetAttribute("href");
+        public string GetNewAccountHref() => driver.FindElement(newAccountIdLink).GetAttribute("href") ?? string.Empty;
         public string GetDeniedErrorMessage() => GetText(deniedErrorMessage);
         public void WaitForResult()
         {

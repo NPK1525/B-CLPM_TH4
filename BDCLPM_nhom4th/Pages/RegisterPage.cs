@@ -96,6 +96,6 @@ namespace ParaBankTests.Pages
         public bool IsWelcomeDisplayed()     => IsDisplayed(welcomeTitle);
 
         public string GenerateUniqueUsername() =>
-            "user_" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            "u_" + Guid.NewGuid().ToString("N")[..12];
     }
 }

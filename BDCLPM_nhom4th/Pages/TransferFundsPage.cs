@@ -56,6 +56,12 @@ namespace ParaBankTests.Pages
             return select.Options.Select(opt => opt.Text).ToList();
         }
 
+        public void ClearAmount()
+        {
+            var el = WaitForElementVisible(amountInput);
+            el.Clear();
+        }
+
         public bool HasAmountError()
         {
             try

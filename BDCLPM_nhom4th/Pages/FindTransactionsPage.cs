@@ -115,7 +115,7 @@ namespace ParaBankTests.Pages
             {
                 return driver.FindElement(transactionBody)
                              .FindElement(By.CssSelector("td a"))
-                             .GetAttribute("href");
+                             .GetAttribute("href") ?? string.Empty;
             }
             catch { return string.Empty; }
         }
